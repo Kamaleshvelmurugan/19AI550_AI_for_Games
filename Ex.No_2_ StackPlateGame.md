@@ -1,6 +1,7 @@
 # Ex.No: 2 Implementation of Stack Plate game using Queue 
-### DATE: 09.08.2024                                                                            
-### REGISTER NUMBER : 212222240042 
+### DATE: 9.8.24               
+### Name: kamalesh v
+### REGISTER NUMBER : 212222240042
 ### AIM: 
 To write a python program to simulate the process of stacking plates.
 ### Algorithm:
@@ -11,85 +12,65 @@ To write a python program to simulate the process of stacking plates.
 5. Display the plate details.
 6. Create an interactive menu and display it.
 ### Program:
-```
-import queue
+```python
+class PlateStack:
+    def __init__(self):
+        self.stack = []
 
-class Plate:
-    def _init_(self, color, size):
-        self.color = color
-        self.size = size
+    def is_empty(self):
+        return len(self.stack) == 0
 
-    def _str_(self):
-        return f"{self.color} plate, size {self.size}"
+    def push(self, plate):
+        self.stack.append(plate)
+        print(f"Plate '{plate}' added to the stack.")
 
-class StackPlateGame:
-    def _init_(self):
-        self.stack = queue.LifoQueue()
-
-    def push_plate(self, plate):
-        self.stack.put(plate)
-        print(f"Pushed {plate} onto the stack")
-
-    def pop_plate(self):
-        if self.stack.empty():
-            print("Stack is empty!")
+    def pop(self):
+        if self.is_empty():
+            print("The stack is empty. No plates to remove.")
         else:
-            plate = self.stack.get()
-            print(f"Popped {plate} from the stack")
-            return plate
+            removed_plate = self.stack.pop()
+            print(f"Plate '{removed_plate}' removed from the stack.")
 
-    def display_plates(self):
-        print("Plates in the stack:")
-        temp_queue = queue.Queue()
-        while not self.stack.empty():
-            plate = self.stack.get()
-            print(plate)
-            temp_queue.put(plate)
-        while not temp_queue.empty():
-            self.stack.put(temp_queue.get())
+    def view_stack(self):
+        if self.is_empty():
+            print("The stack is empty.")
+        else:
+            print("Current stack of plates:")
+            for plate in reversed(self.stack):
+                print(plate)
 
-def main():
-    game = StackPlateGame()
+def plate_stack_game():
+    plate_stack = PlateStack()
+    print("Welcome to the Plate Stack Game!")
+
     while True:
-        print("\nStack Plate Game Menu:")
-        print("1. Push plate onto stack")
-        print("2. Pop plate from stack")
-        print("3. Display plates in stack")
-        print("4. Quit")
+        print("\nChoose an option:")
+        print("1. Add a plate")
+        print("2. Remove a plate")
+        print("3. View stack")
+        print("4. Exit")
+
         choice = input("Enter your choice: ")
-        if choice == "1":
-            color = input("Enter plate color: ")
-            size = input("Enter plate size: ")
-            plate = Plate(color, size)
-            game.push_plate(plate)
-        elif choice == "2":
-            game.pop_plate()
-        elif choice == "3":
-            game.display_plates()
-        elif choice == "4":
+
+        if choice == '1':
+            plate = input("Enter the name of the plate to add: ")
+            plate_stack.push(plate)
+        elif choice == '2':
+            plate_stack.pop()
+        elif choice == '3':
+            plate_stack.view_stack()
+        elif choice == '4':
+            print("Exiting the game. Goodbye!")
             break
         else:
             print("Invalid choice. Please try again.")
 
-if _name_ == "_main_":
-    main()
+if __name__ == "__main__":
+    plate_stack_game()
 ```
 
 ### Output:
-![op2](https://github.com/user-attachments/assets/19eb894f-5f91-404c-975d-c959684cebce)
-
-
+![image](https://github.com/user-attachments/assets/53cc5fd0-4f1a-48f0-8796-ab91aa1ba845)
 
 ### Result:
 Thus the simple Stack plate game was implemented using data structure Stack.
-
-
-
-
-
-
-
-
-
-
-
