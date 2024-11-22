@@ -1,7 +1,7 @@
 # Ex.No: 2 Implementation of Stack Plate game using Queue 
 ### DATE: 9.8.24               
-### Name: kamalesh v
-### REGISTER NUMBER : 212222240042
+### Name: VIGNESH KUMARAN N S
+### REGISTER NUMBER : 212222230171
 ### AIM: 
 To write a python program to simulate the process of stacking plates.
 ### Algorithm:
